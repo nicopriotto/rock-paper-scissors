@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
             break
         }
         default: {
-            return console.error("playerSelection error")
+            return console.warn("playerSelection error")
         }
     }
 }
@@ -64,11 +64,13 @@ function game() {
         if (playRound(getPlayerChoice, computerSelection) === "Win") {
             player++;
             console.log("You Win! " + `${getPlayerChoice}` + " beats " + `${computerSelection}`)
-        } else if (playRound(getPlayerChoice, getComputerChoice()) === "Lose") {
+        } else if (playRound(getPlayerChoice, computerSelection) === "Lose") {
             computer++;
             console.log("You Lose! " + `${computerSelection}` + " beats " + `${getPlayerChoice}`)
-        } else {
+        } else if (playRound(getPlayerChoice, computerSelection) === "Tie") {
             console.log("It's a Tie")
+        } else {
+            console.log("The value inserted is not an option")
         }
     }
 
