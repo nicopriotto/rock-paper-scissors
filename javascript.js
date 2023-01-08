@@ -17,6 +17,7 @@ function firstUpperCase(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+// Function of a single Play Round
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "Tie";
@@ -52,6 +53,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Function of a full game
 function game() {
     var player = 0;
     var computer = 0;
@@ -87,3 +89,33 @@ function game() {
         return "Final Game Result: Tie!";
     }
 }
+
+// Here I selected the buttons, and made it so that if pressed it executes
+// a play round with the playerSelection chosen.
+const rock = document.querySelector(".rock");
+rock.addEventListener('click', function(e) {
+    rock.classList.toggle("pressed");
+    setTimeout(() => {
+        rock.classList.toggle("pressed")
+    }, "400");
+    console.log(playRound("Rock", getComputerChoice()));
+});
+
+const paper = document.querySelector(".paper");
+paper.addEventListener('click', function(e) {
+    paper.classList.toggle("pressed");
+    setTimeout(() => {
+        paper.classList.toggle("pressed")
+    }, "400");
+    console.log(playRound("Paper", getComputerChoice()));
+});
+
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener('click', function(e) {
+    scissors.classList.toggle("pressed");
+    setTimeout(() => {
+        scissors.classList.toggle("pressed")
+    }, "400");
+    console.log(playRound("Scissors", getComputerChoice()));
+});
+
