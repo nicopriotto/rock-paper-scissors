@@ -60,6 +60,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Set the zoom to 80% to make everything look good
+
+document.body.style.zoom = 0.8;
+
 // Here I selected the buttons, and made it so that if pressed it executes
 // a play round with the playerSelection chosen.
 const rock = document.querySelector(".rock");
