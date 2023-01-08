@@ -20,29 +20,36 @@ function firstUpperCase(str) {
 // Function of a single Play Round
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
+        text.innerHTML = "You Tied!";
         return "Tie";
     }
     switch (playerSelection) {
         case "Rock": {
             if (computerSelection === "Paper") {
+                text.innerHTML = "You Lose! Paper beats Rock.";
                 return "Lose";
             } else if (computerSelection === "Scissors") {
+                text.innerHTML = "You Win! Rock beats Scissors.";
                 return "Win"
             }
             break;
         }
         case "Paper": {
             if (computerSelection === "Rock") {
+                text.innerHTML = "You Win! Paper beats Rock.";
                 return "Win";
             } else if (computerSelection === "Scissors") {
+                text.innerHTML = "You Lose! Scissors beats Paper.";
                 return "Lose"
             }
             break;
         }
         case "Scissors": {
             if (computerSelection === "Rock") {
+                text.innerHTML = "You Lose! Rock beats Scissors.";
                 return "Lose";
             } else if (computerSelection === "Paper") {
+                text.innerHTML = "You Win! Scissors beats Paper.";
                 return "Win"
             }
             break
@@ -50,43 +57,6 @@ function playRound(playerSelection, computerSelection) {
         default: {
             return console.warn("playerSelection error")
         }
-    }
-}
-
-// Function of a full game
-function game() {
-    var player = 0;
-    var computer = 0;
-
-    for (let i = 0; i < 5; i++) {
-        var getPlayerChoice = prompt("Insert Choice");
-        var getPlayerChoice = firstUpperCase(getPlayerChoice);
-        var computerSelection = getComputerChoice();
-
-        if (playRound(getPlayerChoice, computerSelection) === "Win") {
-            player++;
-            console.log("You Win! " + `${getPlayerChoice}` + " beats " + `${computerSelection}`)
-        } else if (playRound(getPlayerChoice, computerSelection) === "Lose") {
-            computer++;
-            console.log("You Lose! " + `${computerSelection}` + " beats " + `${getPlayerChoice}`)
-        } else if (playRound(getPlayerChoice, computerSelection) === "Tie") {
-            console.log("It's a Tie")
-        } else {
-            console.log("The value inserted is not an option")
-        }
-    }
-
-    if (player > computer) {
-        console.log("Final Game Result: Player Wins :)");
-        return "Final Game Result: Player Wins :)";
-
-    } else if (player < computer) {
-        console.log("Final Game Result: Computer Wins :(");
-        return "Final Game Result: Computer Wins :(";
-
-    } else {
-        console.log("Final Game Result: Tie!");
-        return "Final Game Result: Tie!";
     }
 }
 
@@ -99,6 +69,7 @@ rock.addEventListener('click', function(e) {
         rock.classList.toggle("pressed")
     }, "400");
     tallyModify(playRound("Rock", getComputerChoice()));
+    end()
 });
 
 const paper = document.querySelector(".paper");
@@ -108,6 +79,7 @@ paper.addEventListener('click', function(e) {
         paper.classList.toggle("pressed")
     }, "400");
     tallyModify(playRound("Paper", getComputerChoice()));
+    end();
 });
 
 const scissors = document.querySelector(".scissors");
@@ -117,6 +89,7 @@ scissors.addEventListener('click', function(e) {
         scissors.classList.toggle("pressed")
     }, "400");
     tallyModify(playRound("Scissors", getComputerChoice()));
+    end()
 });
 
 
@@ -137,4 +110,41 @@ if (play === "Win") {
     computer++;
     console.log(computer);
     tallyComputer.textContent = computer;
+}
+
+// Final text
+
+const text = document.querySelector("#textResult");
+function end() {
+    if (player === 5) {
+        setTimeout( () => {
+            text.innerHTML = "Final Game Result: Player Wins :)";
+        }, 2000); 
+        newGame();
+    } else if (computer === 5) {
+        setTimeout( () => {
+            text.innerHTML =  "Final Game Result: Computer Wins :(";
+        }, 2000); 
+        newGame();
+    } 
+}
+
+// Config for new game
+function newGame() {
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+
+    const restart = document.createElement("button");
+    restart.classList.add("restart");
+    restart.textContent = "RESTART";
+    restart.addEventListener('click', () => {
+        restart.classList.add("bigger")
+        setTimeout( () => {
+            window.location.reload();
+        }, 300);
+        
+    });
+    const end = document.querySelector(".end");
+    end.appendChild(restart);
 }

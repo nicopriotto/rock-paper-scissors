@@ -7,8 +7,6 @@ body {
     color: white;
 }
 
-
-
 h1 {
     font-size: 100px;
     margin-top: 30px;
@@ -32,20 +30,28 @@ h4{
 .results {
     display: flex;
     justify-content: space-evenly;
-    gap: 200px;
     margin-bottom: -280px;
 }
 
-.player, .computer {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    text-align: center;
+.player, 
+.computer, 
+#textResult {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  text-align: center;
+  width: 250px;  /* added width */
+  margin: auto;  /* added margin: auto */
+}
+
+#textResult {
+    font-size: 50px;
+    margin-top: 100px;
+    width: 400px;
 }
 
 .tallyPlayer, .tallyComputer {
     font-size: 60px;
-    text-shadow: 0 0 20px 50px black;
     text-align: center;
     margin-top: -170px;
 }
@@ -72,10 +78,32 @@ h4{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 240px;
+    margin-top: 230px;
 }
 
 .secondrow {
     display: flex;
     gap: 30px;
+}
+
+.end {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.restart {
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 0 20px 20px white;
+    background-color: black;
+    color: white;
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.bigger {
+    transform: scale(1.2);
 }
