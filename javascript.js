@@ -87,5 +87,3 @@ function game() {
         return "Final Game Result: Tie!";
     }
 }
-
-game()

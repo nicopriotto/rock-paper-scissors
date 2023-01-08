@@ -1,0 +1,50 @@
+body {
+    background-image: url(./img/ring.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-family: "VT323";
+    font-size: 100px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: white;
+    font-family: "VT323";
+    font-size: 50px;
+    margin-top: -75px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    background-color: transparent;
+    outline: none;
+    border-color: transparent;
+    height: auto;
+}
+
+.symbol {
+    width: 150px;
+    margin: auto;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 230px;
+}
+
+.secondrow {
+    display: flex;
+    gap: 30px;
+}
