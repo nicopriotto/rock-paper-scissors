@@ -98,7 +98,7 @@ rock.addEventListener('click', function(e) {
     setTimeout(() => {
         rock.classList.toggle("pressed")
     }, "400");
-    console.log(playRound("Rock", getComputerChoice()));
+    tallyModify(playRound("Rock", getComputerChoice()));
 });
 
 const paper = document.querySelector(".paper");
@@ -107,7 +107,7 @@ paper.addEventListener('click', function(e) {
     setTimeout(() => {
         paper.classList.toggle("pressed")
     }, "400");
-    console.log(playRound("Paper", getComputerChoice()));
+    tallyModify(playRound("Paper", getComputerChoice()));
 });
 
 const scissors = document.querySelector(".scissors");
@@ -116,6 +116,25 @@ scissors.addEventListener('click', function(e) {
     setTimeout(() => {
         scissors.classList.toggle("pressed")
     }, "400");
-    console.log(playRound("Scissors", getComputerChoice()));
+    tallyModify(playRound("Scissors", getComputerChoice()));
 });
 
+
+ // Modify the tally counters when win or lose
+const tallyPlayer = document.querySelector(".tallyPlayer");
+const tallyComputer = document.querySelector(".tallyComputer");
+
+player = 0; // player starts with 0 points
+computer = 0; // idem
+
+function tallyModify(play) {
+if (play === "Win") {
+    player++;
+    console.log(player);
+    tallyPlayer.textContent = player;
+    return
+} else if (play == "Lose")
+    computer++;
+    console.log(computer);
+    tallyComputer.textContent = computer;
+}
